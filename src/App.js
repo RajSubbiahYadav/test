@@ -20,6 +20,7 @@ function App() {
         const data = new FormData();
         data.append("name", file.name);
         data.append("file", file);
+        console.log("GIT UPDATE");
 
 
        let response = await uploadFile(data);
