@@ -5,6 +5,7 @@ import { uploadFile } from "./services/api";
 
 function App() {
   const [file, setFile] = useState("");
+  const [result, setResult] = useState("");
 
   const fileInputRef = useRef();
 
@@ -20,10 +21,11 @@ function App() {
         const data = new FormData();
         data.append("name", file.name);
         data.append("file", file);
-        console.log("GIT UPDATE");
 
 
-       let response = await uploadFile(data);
+
+        let response = await uploadFile(data);
+        setResult(response.path);
       }
     }
     getImage();
@@ -46,6 +48,8 @@ function App() {
           style={{ display: "none" }}
           onChange={(e) => setFile(e.target.files[0])}
         />
+
+        <a href={result} target="_blank">{result}</a>
       </div>
     </div>
   );
